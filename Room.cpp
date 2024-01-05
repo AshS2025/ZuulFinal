@@ -17,14 +17,15 @@ strcpy(description, newDescription);
 }
 
 //Item functions
-Item Room::getItem(char* itemTitle){
+Item* Room::getItem(char* itemTitle){
 vector <Item> :: iterator it;
 for(it = Items.begin(); it != Items.end(); it++){
 if(strcmp(it->getDescription(), itemTitle) == 0){
-return (*it);
+  Item* temp = &(*it);  
+return temp;
     }
 }
-return 0; 
+return NULL; 
     
 }
 
@@ -55,7 +56,9 @@ void Room :: printItems(){ //printing out the inventory
 void Room::ExitsAndItems(){ //prints out info in current room
     cout << "Exits: " << endl;
   for(map<char*, Room*>::iterator it = exits.begin(); it != exits.end(); it++){
+    if (it->second != NULL){
     cout << " " << it->first;
+    }
   }
   cout << endl;
   cout << "Items in this room: " << endl;
