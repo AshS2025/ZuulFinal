@@ -29,7 +29,7 @@ public:
   void ExitsAndItems(); //printing out room info
     
 //  Item functiosn
-Item getItem (char* itemTitle);
+Item* getItem (char* itemTitle);
 void removeItem (char* itemTitle);
 void printItems();     
 void setItem (Item newItem);
